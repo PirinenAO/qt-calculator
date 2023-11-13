@@ -60,15 +60,17 @@ void app::numberButtonClicked()
         {
             first_num = userInput.toDouble(); // add ok later for error handling
             displayValue.push_back(button->text());
+            ui->Main_display_2->setText(" ");
+            ui->Main_display->setText(QString::number(first_num));
         }
         else if(!squareRoot)
         {
             second_num = userInput.toDouble();
-            displayValue.push_back(button->text());
+            //displayValue.push_back(button->text());
+            ui->Main_display->setText(QString::number(second_num));
         }
 
 
-        ui->Main_display->setText(displayValue);
     }
 
 
@@ -107,11 +109,17 @@ void app::mathButtonClicked()
         }
 
         if(squareRoot){
-            displayValue.push_front("√");
-        }else{
-            displayValue.push_back(button->text());
+            displayValue.push_front(" √ ");
+        }else if(powerTo){
+            displayValue.push_back(" ^ ");
         }
-        ui->Main_display->setText(displayValue);
+        else
+        {
+            displayValue.push_back(" "+button->text()+" ");
+        }
+
+        ui->Main_display_2->setText(displayValue);
+        ui->Main_display->setText(QString::number(first_num));
 
         commaSet = false;
         mathPressed = true;
@@ -140,9 +148,15 @@ void app::on_Equal_clicked()
     }
 
     if(mathPressed){
-    displayValue.push_back("="+QString::number(solution));
-    ui->Main_display->setText(displayValue);
-    //ui->Main_display->setText("fn="+QString::number(first_num)+" sn="+QString::number(second_num)+"= "+QString::number(solution));
+
+    //adding second num to displayvalue before we print it
+    displayValue.push_back(QString::number(second_num)+" =");
+    //priting displayvalue to history
+    ui->Main_display_2->setText(displayValue);
+    //printing solution to main display
+    ui->Main_display->setText(QString::number(solution));
+
+    //resetting
     solution = 0;
     first_num = 0;
     second_num = 0;
@@ -172,6 +186,7 @@ void app::on_AC_clicked()
     displayValue = NULL;
     userInput = NULL;
     ui->Main_display->setText("0");
+    ui->Main_display_2->setText(" ");
     mathPressed = false;
 }
 
@@ -189,27 +204,32 @@ void app::on_ChangeSign_clicked()
 {
     if(!mathPressed && !displayValue.isEmpty()){
         first_num = -1 * first_num;
-        ui->Main_display->setText(QString::number(first_num));
-        displayValue = ui->Main_display->text();
-    }
-    else if(mathPressed && second_num)
-    {
-        QString number = QString::number(second_num);
-        int index = displayValue.length() - number.length();
-        second_num = -1 * second_num;
-
         if(!negSet){
-            displayValue.insert(index, "(-");
-            displayValue.push_back((")"));
+            displayValue.push_front("-");
+            userInput.push_front("-");
             negSet = true;
         }else{
-            displayValue.remove("(-");
-            displayValue.remove(")");
+            displayValue.remove("-");
+            userInput.remove("-");
             negSet = false;
         }
 
-
         ui->Main_display->setText(displayValue);
+        //displayValue = ui->Main_display->text();
+    }
+    else if(mathPressed && second_num)
+    {
+        second_num = -1 * second_num;
+
+        if(!negSet){
+            userInput.push_front("-");
+            negSet = true;
+        }else{
+            userInput.remove("-");
+            negSet = false;
+        }
+
+        ui->Main_display->setText(userInput);
     }
 
 }
@@ -226,8 +246,7 @@ void app::on_Comma_clicked()
     }
     else if(!commaSet && second_num && mathPressed){
         userInput.push_back(".");
-        displayValue.push_back(".");
-        ui->Main_display->setText(displayValue);
+        ui->Main_display->setText(QString::number(second_num)+".");
         commaSet = true;
     }
 }

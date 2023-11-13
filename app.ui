@@ -59,9 +59,9 @@ border-radius: 7px;
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>70</y>
+      <y>92</y>
       <width>331</width>
-      <height>96</height>
+      <height>71</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="Main_Display">
@@ -75,7 +75,7 @@ border-radius: 7px;
        </property>
        <property name="font">
         <font>
-         <family>Segoe UI</family>
+         <family>Arial</family>
          <pointsize>31</pointsize>
          <bold>true</bold>
         </font>
@@ -93,7 +93,7 @@ border-radius: 7px;
         <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
        </property>
        <property name="margin">
-        <number>20</number>
+        <number>14</number>
        </property>
        <property name="indent">
         <number>0</number>
@@ -401,6 +401,56 @@ border-radius: 7px;
        </property>
        <property name="text">
         <string>,</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>51</y>
+      <width>331</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="History">
+     <item>
+      <widget class="QLabel" name="Main_display_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{color:#9F9F9F;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+       </property>
+       <property name="margin">
+        <number>9</number>
+       </property>
+       <property name="indent">
+        <number>0</number>
        </property>
       </widget>
      </item>
