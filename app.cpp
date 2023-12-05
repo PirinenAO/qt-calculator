@@ -152,9 +152,18 @@ void app::on_Equal_clicked()
     //adding second num to displayvalue before we print it
     displayValue.push_back(QString::number(second_num)+" =");
     //priting displayvalue to history
+
+    if(!squareRoot){
     ui->Main_display_2->setText(displayValue);
-    //printing solution to main display
-    ui->Main_display->setText(QString::number(solution));
+    }
+
+    //checking if solution has decimals in it, and if so we will limit the decimals to 2
+    //else we print the solution without decimals
+    if (solution != static_cast<int>(solution)) {
+        ui->Main_display->setText(QString::number(solution,'f',2));
+    } else {
+        ui->Main_display->setText(QString::number(solution,'f',0));
+    }
 
     //resetting
     solution = 0;
