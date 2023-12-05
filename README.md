@@ -18,22 +18,22 @@ The UI was made with Qt Creator and styled with CSS. It attempts to mimic the cl
 ## To test this on Linux environment:
 
 clone the repository:
-```
+```bash
 git clone https://github.com/PirinenAO/qt-calculator.git
 ```
 create build direcotry inside the project and move there:
-```
+```bash
 cd qt-calculator && mkdir build && cd build
 ```
 generate build files:
-```
+```bash
 cmake ..
 ```
 build executable:
-```
+```bash
 make
 ```
 run:
-```
+```bash
 ./app
 ```
