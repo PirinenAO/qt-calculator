@@ -20,7 +20,10 @@ The UI was made with Qt Creator and styled with CSS. It attempts to mimic the cl
 <br>
 
 ## To test this on Linux environment:
-
+depencies:
+```bash
+sudo apt update && sudo apt install cmake && sudo apt install qt6-base-dev
+```
 clone the repository:
 ```bash
 git clone https://github.com/PirinenAO/qt-calculator.git
