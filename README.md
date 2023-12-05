@@ -1,4 +1,4 @@
-## Calculator made with Qt6 and C++ in Qt creator
+## Calculator made with Qt6 and C++
 
 It is still under development, but has working functions such as:
 - multiplication 
