@@ -20,7 +20,7 @@ The UI was made with Qt Creator and styled with CSS. It attempts to mimic the cl
 <br>
 
 ## To test this on Linux environment:
-dependencies (ubuntu and other debian-based distros):
+** Dependencies (ubuntu and other debian-based distros): **
 ```bash
 sudo apt update && sudo apt install cmake && sudo apt install qt6-base-dev
 ```
