@@ -1,4 +1,4 @@
-## Calculator made with Qt6 and C++
+# Calculator made with Qt6 and C++
 
 It is still under development, but has working functions such as:
 - multiplication 
@@ -20,27 +20,27 @@ The UI was made with Qt Creator and styled with CSS. It attempts to mimic the cl
 <br>
 
 ## To test this on Linux environment:
-** Dependencies (ubuntu and other debian-based distros): **
+**Dependencies (ubuntu and other debian-based distros):**
 ```bash
 sudo apt update && sudo apt install cmake && sudo apt install qt6-base-dev
 ```
-clone the repository:
+**Clone the repository:**
 ```bash
 git clone https://github.com/PirinenAO/qt-calculator.git
 ```
-create build directory inside the project and move there:
+**Create build directory inside the project and move there:**
 ```bash
 cd qt-calculator && mkdir build && cd build
 ```
-generate build files:
+**Generate build files:**
 ```bash
 cmake ..
 ```
-build executable:
+**Build executable:**
 ```bash
 make
 ```
-run:
+**Run:**
 ```bash
 ./app
 ```
