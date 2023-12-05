@@ -10,26 +10,30 @@ It is still under development, but has working functions such as:
 It can also handle both negative and decimal numbers.
 The UI was made with Qt Creator and styled with CSS. It attempts to mimic the clean look of the Windows 10/11 calculator.
 
-![image](https://github.com/PirinenAO/qt-calculator/assets/119351375/f0ca6e87-4c41-44c7-b550-1fb6b7e50932)
+
+![image](https://github.com/PirinenAO/qt-calculator/assets/119351375/c2b92930-575d-45ee-84c3-488c4e6cca22)
+
+
 
 To test this on Linux environment:
 
+clone the repository:
 ```bash
-git clone https://github.com/PirinenAO/qt-calculator.git
+**git clone https://github.com/PirinenAO/qt-calculator.git**
 ```
-
+create build direcotry inside the project and move there:
 ```bash
-cd qt-calculator && mkdir build && cd build
+**cd qt-calculator && mkdir build && cd build**
 ```
-
+generate build files:
 ```bash
-cmake ..
+**cmake ..**
 ```
-
+build executable:
 ```bash
-make
+**make**
 ```
-
+run:
 ```bash
-./app
+**./app**
 ```
