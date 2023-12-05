@@ -15,25 +15,25 @@ The UI was made with Qt Creator and styled with CSS. It attempts to mimic the cl
 
 
 
-To test this on Linux environment:
+##To test this on Linux environment:
 
 clone the repository:
 ```bash
-**git clone https://github.com/PirinenAO/qt-calculator.git**
+git clone https://github.com/PirinenAO/qt-calculator.git
 ```
 create build direcotry inside the project and move there:
 ```bash
-**cd qt-calculator && mkdir build && cd build**
+cd qt-calculator && mkdir build && cd build
 ```
 generate build files:
 ```bash
-**cmake ..**
+cmake ..
 ```
 build executable:
 ```bash
-**make**
+make
 ```
 run:
 ```bash
-**./app**
+./app
 ```
