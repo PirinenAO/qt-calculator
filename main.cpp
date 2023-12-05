@@ -8,7 +8,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     app w;
-    //w.setWindowFlag(Qt::FramelessWindowHint); // This removes the title bar
     w.show();
     return a.exec();
 }

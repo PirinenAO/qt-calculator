@@ -2,13 +2,16 @@
 #include "./ui_app.h"
 #include "math.h"
 
+const int NUMBER_BUTTONS = 9; // Amount of buttons
+
+// CONSTRUCTOR
 app::app(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Calculator)
 {
     ui->setupUi(this);
 
-    const int NUMBER_BUTTONS = 9;
+// INITIALIZING VARIABLES
     mathPressed = false;
     commaSet = false;
     negSet = false;
@@ -16,7 +19,6 @@ app::app(QWidget *parent)
     first_num = 0;
 
 // CONNECTING NUMBER BUTTONS TO numberButtonClicked() -function by using for loop
-
     for(int i = 0;i<=NUMBER_BUTTONS;i++){
         // Concatenating string "Button" and integer value (i)
         QString buttonName = "Button"+QString::number(i);
@@ -40,12 +42,13 @@ app::app(QWidget *parent)
     connect(ui->PowerTo, SIGNAL(clicked()), this, SLOT(mathButtonClicked()));
 }
 
+// DESTRUCTOR
 app::~app()
 {
     delete ui;
 }
 
-// DEFINING METHODS
+// DEFINING METHODS FOR BUTTONS
 
 void app::numberButtonClicked()
 {
@@ -53,20 +56,17 @@ void app::numberButtonClicked()
     QPushButton* button = qobject_cast<QPushButton*>(sender());
 
     if(button){
-
         userInput.push_back(button->text());
-
         if(!mathPressed)
         {
-            first_num = userInput.toDouble(); // add ok later for error handling
+            first_num = userInput.toDouble();
             displayValue.push_back(button->text());
-            ui->Main_display_2->setText(" ");
+            ui->History_display->setText(" ");
             ui->Main_display->setText(QString::number(first_num));
         }
         else if(!squareRoot)
         {
             second_num = userInput.toDouble();
-            //displayValue.push_back(button->text());
             ui->Main_display->setText(QString::number(second_num));
         }
 
@@ -118,7 +118,7 @@ void app::mathButtonClicked()
             displayValue.push_back(" "+button->text()+" ");
         }
 
-        ui->Main_display_2->setText(displayValue);
+        ui->History_display->setText(displayValue);
         ui->Main_display->setText(QString::number(first_num));
 
         commaSet = false;
@@ -148,24 +148,23 @@ void app::on_Equal_clicked()
     }
 
     if(mathPressed){
-
-    //adding second num to displayvalue before we print it
+    // Adding second num to displayvalue before we print it
     displayValue.push_back(QString::number(second_num)+" =");
-    //priting displayvalue to history
 
+    // Printing second number to history
     if(!squareRoot){
-    ui->Main_display_2->setText(displayValue);
+    ui->History_display->setText(displayValue);
     }
 
-    //checking if solution has decimals in it, and if so we will limit the decimals to 2
-    //else we print the solution without decimals
+    // Checking if solution has decimals in it, and if so we will limit the decimals to 2
+    // else we print the solution without decimals
     if (solution != static_cast<int>(solution)) {
         ui->Main_display->setText(QString::number(solution,'f',2));
     } else {
         ui->Main_display->setText(QString::number(solution,'f',0));
     }
 
-    //resetting
+    // Resetting
     solution = 0;
     first_num = 0;
     second_num = 0;
@@ -178,7 +177,7 @@ void app::on_Equal_clicked()
 
 }
 
-// ALL CLEAR CLICKED
+
 void app::on_AC_clicked()
 {
     negSet = false;
@@ -195,23 +194,14 @@ void app::on_AC_clicked()
     displayValue = NULL;
     userInput = NULL;
     ui->Main_display->setText("0");
-    ui->Main_display_2->setText(" ");
+    ui->History_display->setText(" ");
     mathPressed = false;
 }
 
-/*    if(!mathPressed && displayValue.isEmpty()){
-        return;
-    }else if(!mathPressed){
-        displayValue.push_back(button->text());
-        ui->Main_display->setText(displayValue);
-        mathPressed = true;
-    }*/
 
-
-// CHANGE SIGN BUTTON CLICKED
 void app::on_ChangeSign_clicked()
 {
-    if(!mathPressed && !displayValue.isEmpty()){
+    if(!mathPressed && !displayValue.isEmpty()){ // Changing sign for the first number
         first_num = -1 * first_num;
         if(!negSet){
             displayValue.push_front("-");
@@ -222,11 +212,9 @@ void app::on_ChangeSign_clicked()
             userInput.remove("-");
             negSet = false;
         }
-
         ui->Main_display->setText(displayValue);
-        //displayValue = ui->Main_display->text();
     }
-    else if(mathPressed && second_num)
+    else if(mathPressed && second_num) // Changing sign for the second number
     {
         second_num = -1 * second_num;
 
@@ -243,10 +231,10 @@ void app::on_ChangeSign_clicked()
 
 }
 
-// ADD COMMA
+
 void app::on_Comma_clicked()
 {
-    if (!commaSet && first_num && !mathPressed) // if there is no comma
+    if (!commaSet && first_num && !mathPressed) // If there is no comma
     {
         userInput.push_back(".");
         displayValue.push_back(".");
